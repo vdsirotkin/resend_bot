@@ -3,7 +3,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_4477493237b6_key -iv $encrypted_4477493237b6_iv
   -in password_file.enc -out src/main/resources/password_file -d
 - sudo apt-get install ansible
-- ansible-vault decrypt src/main/resources/config_prod.properties --vault-password-file
+- ansible-vault decrypt src/main/resources/config_dev.properties --vault-password-file
   src/main/resources/password_file
 jdk:
 - oraclejdk8
