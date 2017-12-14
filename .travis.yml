@@ -3,7 +3,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_4477493237b6_key -iv $encrypted_4477493237b6_iv
   -in password_file.enc -out src/main/resources/password_file -d
 - sudo apt-get install ansible
-- ansible-vault decrypt src/main/resources/config_dev.properties --vault-password-file
+- ansible-vault decrypt src/main/resources/config_prod.properties --vault-password-file
   src/main/resources/password_file
 jdk:
 - oraclejdk8
@@ -17,7 +17,7 @@ deploy:
   script: mvn package -Dwildfly.hostname=$WILDFLY_HOSTNAME -Dwildfly.username=$WILDFLY_USERNAME
     -Dwildfly.password=$WILDFLY_PASSWORD
   on:
-    feature/travis-integration
+    develop
 env:
   global:
   - secure: INVjSIPlyfEvVWMAQ2zTDbjmlacM+YbchdK2KZ1ajFlRmPcinfIVToC8JpTYstW+8Be+lWw+jLm2WUt3fHGKK6u1vANA/3rcjWn4RT5eR6mutUBsxB+evO5g6JfdqvPnfXpcUDLxKL5qYFWKcmxayt4Z9uafGw8zhbkRUiGyqwngR4bxJic08COdSGKNGenQQ921FP2yDPq2tntzdP/n6DrRgFsqdxs9PdIHSWNd2lqIDX13v8z860XANXaIIDIWuKU/kGmzEdnsjLVf8DGmwn5hSUtO9lfZJDip3qSPbeKoKCDq5424qi50sQZZrM+UgdX3TsFVCCLfluZoh9Zi6QoraKPRzOz93VyOHvGQjgOa2/BA9Z3ojII9pWGdUI/G6i8JNbj6EF3L6FE1rRKRYrlR/Jlm/cv4tcJpPZq4ZeMS7FPzJHqWp4NCJKyrLVGGLuBIGLmfRifM1uzDPEIqTmZFyKndl77TZNlK+0XHtWU0w91NLnxqY+kk2pFBZXM9z4JtlAJ80uHHNwlXfFoQ/iyRz1iHUkxa4CHYjBActU4Ngpko3DvZN4R1Q1RKJgS59fVIjZ09vTRwubZ4yA/vXpdfz1WhUFg4MripHqnY+VH7i2YDAqALOu1l5oTg29E/aakAwblQTieMGXq+zYw5z0p/nPg5c/k5O3LWwnSSa4g=
