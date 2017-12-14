@@ -13,6 +13,7 @@ install: true
 script: mvn compile
 deploy:
 - provider: script
+  skip_cleanup: true
   script: mvn package -Dwildfly.hostname=$WILDFLY_HOSTNAME -Dwildfly.username=$WILDFLY_USERNAME
     -Dwildfly.password=$WILDFLY_PASSWORD
   on:
