@@ -6,7 +6,7 @@ before_install:
 - ansible-vault decrypt src/main/resources/config_prod.properties --vault-password-file
   src/main/resources/password_file
 jdk:
-- oraclejdk8
+- openjdk8
 os:
 - linux
 install: true
