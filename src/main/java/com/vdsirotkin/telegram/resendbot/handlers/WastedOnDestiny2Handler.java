@@ -18,7 +18,6 @@ import com.vdsirotkin.telegram.resendbot.destiny2.responses.GetProfileResponse;
 import com.vdsirotkin.telegram.resendbot.destiny2.responses.SearchDestinyPlayerResponse;
 import com.vdsirotkin.telegram.resendbot.utils.DefaultMessages;
 import org.apache.log4j.Logger;
-import org.apache.log4j.net.SyslogAppender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -111,7 +110,7 @@ public class WastedOnDestiny2Handler implements Handler {
                     CharacterModel character = new CharacterModel();
                     character.setClassName(service.getClassNameByHash(entry.getValue().getClassHash()));
                     character.setLight(entry.getValue().getLight());
-                    GetHistoricalStatsResponse statsResponse = new GetHistoricalStatsExecutor().executeMethod(new GetHistoricalStatsRequest().setCharacterId(entry.getValue().getCharacterId()).setDestinyMembershipId(membershipId));
+                    GetHistoricalStatsResponse statsResponse = new GetHistoricalStatsExecutor().executeMethod(new GetHistoricalStatsRequest().setDestinyMembershipType(membershipType).setCharacterId(entry.getValue().getCharacterId()).setDestinyMembershipId(membershipId));
                     DestinyHistoricalStatsValue allPvp = statsResponse.getResponse().getAllPvP();
                     DestinyHistoricalStatsValueDictionary allTime = allPvp.getAllTime();
                     if (allTime != null) {

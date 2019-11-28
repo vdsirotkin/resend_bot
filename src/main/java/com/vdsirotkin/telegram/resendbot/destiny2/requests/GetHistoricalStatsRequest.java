@@ -5,8 +5,18 @@ package com.vdsirotkin.telegram.resendbot.destiny2.requests;
  */
 public class GetHistoricalStatsRequest {
 
+    private Integer destinyMembershipType;
     private Long destinyMembershipId;
     private Long characterId;
+
+    public Integer getDestinyMembershipType() {
+        return destinyMembershipType;
+    }
+
+    public GetHistoricalStatsRequest setDestinyMembershipType(Integer destinyMembershipType) {
+        this.destinyMembershipType = destinyMembershipType;
+        return this;
+    }
 
     public Long getDestinyMembershipId() {
         return destinyMembershipId;

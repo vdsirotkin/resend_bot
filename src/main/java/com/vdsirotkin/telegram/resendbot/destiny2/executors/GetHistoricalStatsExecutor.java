@@ -11,8 +11,8 @@ public class GetHistoricalStatsExecutor extends BaseExecutor<GetHistoricalStatsR
 
     @Override
     public GetHistoricalStatsResponse executeMethod(GetHistoricalStatsRequest request) {
-        String urlPattern = BASE_URL + "/Destiny2/2/Account/%d/Character/%d/Stats?periodType=AllTime";
-        String url = String.format(urlPattern, request.getDestinyMembershipId(), request.getCharacterId());
+        String urlPattern = BASE_URL + "/Destiny2/%d/Account/%d/Character/%d/Stats?periodType=AllTime";
+        String url = String.format(urlPattern, request.getDestinyMembershipType(), request.getDestinyMembershipId(), request.getCharacterId());
         return execute(new HttpGet(url), GetHistoricalStatsResponse.class);
     }
 }
